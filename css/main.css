@@ -1,0 +1,161 @@
+html, body{
+    width:100%;
+    height:100%;
+    margin:0;
+    }
+body{
+	background:#000;
+	color:#fff;
+	font-family:Arial, Helvetica, sans-serif;
+}
+    
+header{
+	height:10%;
+}
+
+#map{
+	width:100%;
+	height:100%;
+}
+#sidebar{
+}
+	#sidebar ul{
+		margin-top:0;
+	}
+	#sidebar h2{
+		margin-bottom:0;
+	}
+/* */
+header{
+	height:10%;
+	width:100%;
+}
+header#mainheader{
+	font-size:50%;
+}
+	header#mainHeader #logo{
+		float:left;
+		margin-right:50px;
+	}
+	header#mainheader .headerTextWrap{
+		float:left;
+		width:50%;
+		height:100%;
+	}
+	header#mainHeader h1{
+		line-height:1;
+		padding:0;
+		height:65%;
+		margin:0;
+	}
+	
+	header#mainHeader h2{
+		line-height:1;
+		padding:0;
+		height:30%;
+		font-style:italic;
+		margin:0;
+	}
+#addressBar{
+	position:absolute;
+	right:1em;
+	top:1em;
+	width:25%;
+	margin:0;
+}
+#addressBar label{
+	float:left;
+	margin:2px 10px 0 0;
+	display:inline;
+}
+#address{
+	float:left;
+	width:60%;
+	margin-right:10px;
+}
+#addressButton{
+	float:left;
+}
+#addressError{display:none;}
+.utilityItem{
+	padding:10px 0;
+}
+.utilityItem label{width:20%;}
+.utilityItem select,
+.utilityItem input{
+	width:60%;
+	float:right;
+}
+.legendItem{padding:10px;}
+hr{margin:10px 0;}
+
+
+.officialTable{
+	width:100%;
+	margin-bottom:20px;	
+}
+.officialTable .title{
+	border-bottom:.5px solid #999;
+	padding:2px 0;
+	font-size:125%;
+}
+.officialTable .key{
+	width:35%;
+	padding:0 2.5%;
+	text-align:right;
+}
+.officialTable .value{width:60%;}
+
+/* LAYOUT */
+.ui-layout-pane{
+	background:#000;
+	border:none;
+	
+}
+.ui-layout-resizer{
+	border-radius: 2px; 
+	-moz-border-radius: 2px; 
+	-webkit-border-radius: 2px; 
+	border: 1px solid #2657A6;
+}
+.ui-layout-resizer, 
+.ui-layout-resizer-closed{
+	background:#75ABFF;
+}
+.ui-layout-toggler, 
+.ui-layout-toggler-closed{
+	background:#2657A6;
+}
+
+.ui-layout-resizer:hover{
+	background:#2657A6;
+}
+.ui-layout-resizer:hover .ui-layout-toggler:hover, 
+.ui-layout-toggler:hover{
+	background:#0C316C;
+}
+.ui-layout-resizer-closed:hover .ui-layout-toggler-closed:hover, 
+.ui-layout-toggler-closed:hover{
+	background:#75ABFF;
+}
+
+/* JQuery UI MODS*/
+.ui-tabs {font-size:80%;}
+.ui-tabs .ui-tabs-hide {
+    position: absolute;
+    left: -10000px;
+}
+.ui-accordian{
+	width:90%;
+	margin:0;
+	padding:0 5%;
+}
+.ui-tabs .ui-tabs-panel{
+	padding:0 1%;
+	width:98%;
+	
+}
+.ui-accordion-header{
+  text-align: left;
+}
+
