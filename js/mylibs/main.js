@@ -11,6 +11,8 @@ dojo.require("esri.tasks.query");
 dojo.require("esri.tasks.geometry");
 dojo.require("dijit.form.CheckBox");
 dojo.require("dijit.form.Select");
+dojo.require("dojox.charting.widget.Chart2D");
+dojo.require("dojox.charting.themes.Electric");
 
 
 /* Global Variables */
@@ -47,12 +49,19 @@ $(document).ready(function() {
 		header: "h3",
 		autoHeight: false,
  	});
+ 	
+ 	$("#statistics").accordion({ 
+		header: "h3",
+		autoHeight: false,
+ 	});
 	
 	/* Create tabed sidebar */
 	$('#sidebarTabs').tabs({header:"h2"});
 	
 });
-
+function clearGeocode(){
+	map.graphics.clear();
+}
 function makeMap(){
 	/* Build Map */
 	var initExtent = new esri.geometry.Extent(config.extent);
@@ -70,17 +79,22 @@ function makeMap(){
    	/* Operational Layers */
    	legendLayers = addDynamicLayers();
    	
-   	// on click, update stats   	
-   	dojo.connect(dijit.byId('legendCombobox'), 'onchange', function(evt){setVisibleLayers(evt.target.value)});
+   	/* Geocode Graphics */
+	geocodeLayer = new esri.layers.GraphicsLayer({id:"lyrGeocode"});
+	map.addLayer(geocodeLayer);
+	map.reorderLayer(geocodeLayer,1);
+   	
+   	
+   	// on click, update stats  
+   	dojo.connect(dojo.byId('addressSearch'), 'onchange', function(evt){locate(evt.target.value)});
+  	dojo.connect(locator, "onAddressToLocationsComplete", showAddress); 	
+   	dojo.connect(dojo.byId('legendCombobox'), 'onchange', function(evt){setVisibleLayers(evt.target.value)});
+	
 	dojo.connect(map, "onClick", function(evt) {
 		queryOfficial(evt.mapPoint);
-		queryData(evt.mapPoint);
+		queryStatistics(evt.mapPoint);
 	});
 	
-/*	dojo.connect(dijit.byId('addressSearch'), 'onchange', function(evt){locate(evt.target.value)});*/
-  	
-  	dojo.connect(locator, "onAddressToLocationsComplete", showAddress);
-   	
    	/* Add Legend */
    	dojo.connect(map,'onLayersAddResult',function(results){
 	   	var legend = new esri.dijit.Legend({

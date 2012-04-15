@@ -87,7 +87,7 @@ header#mainheader{
 	float:right;
 }
 .legendItem{padding:10px;}
-hr{margin:10px 0;}
+hr{margin:10px 0; color:#fff;}
 
 
 .officialTable{
@@ -105,6 +105,18 @@ hr{margin:10px 0;}
 	text-align:right;
 }
 .officialTable .value{width:60%;}
+
+.statChart{
+	width:100%;
+	min-width:200px;
+	height:150px;
+}
+	.statChart h3{
+		border-bottom:.5px solid #999;
+		padding:2px 0;
+		font-size:125%;
+		text-align:center;
+	}
 
 /* LAYOUT */
 .ui-layout-pane{

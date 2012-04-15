@@ -29,8 +29,9 @@
 		<script type="text/javascript" src="js/libs/jquery-1.7.2.min.js"></script>
 		<script type="text/javascript" src="js/libs/jquery.layout.min-1.2.0.js"></script>
 		<script type="text/javascript" src="js/libs/jquery-ui-1.8.18.custom.min.js"></script>
-		<script type="text/javascript" src="js/config.json"></script>
+		<script type="text/javascript" src="js/config.js"></script>
 		<script type="text/javascript" src="js/mylibs/officials.js"></script>
+		<script type="text/javascript" src="js/mylibs/statistics.js"></script>
 		<script type="text/javascript" src="js/mylibs/utilities.js"></script>
 		<script type="text/javascript" src="js/mylibs/main.js"></script>
 		<link type="text/css" href="css/dot-luv/jquery-ui-1.8.18.custom.css" rel="stylesheet" />
@@ -39,7 +40,7 @@
 	</head>
 	<body>
 		<header id="mainHeader" class="ui-layout-north">
-			<img src="images/WoundedWarriorProject.png" alt="Wounded Warrior Project" width="52px" id="logo"/>
+			<img src="img/WoundedWarriorProject.png" alt="Wounded Warrior Project" width="52px" id="logo"/>
 			<h1>Wounded Warrior Project</h1>
 			<h2>Congressional Tracker</h2>
 		</header>
@@ -51,12 +52,13 @@
 			<div id="sidebarTabs">
 				<ul>
 					<li><a href="#utilities">Utilities</a></li>
-					<li><a href="#statistics">Statistics</a></li>
-					<li><a href="#officials">Elected Officials</a></li>
+					<li><a href="#statistics" id='tabStatistics'>Statistics</a></li>
+					<li><a href="#officials">Officials</a></li>
+					<!--<li><a href="#billsearch">Bill Search</li>-->
 				</ul>
 				
 				<div id="utilities">
-					<div class="utilityItem">
+					<div class="legendItem utilityItem ui-accordion-header ui-helper-reset ui-state-default ui-state-active ui-corner-top">
 						<label for="addressSearch">Address Look Up:</label>
 						<input id="addressSearch" type="search" />
 					</div>
@@ -69,19 +71,25 @@
 					<div class="legendItem utilityItem ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
 						<div id="legendDiv"></div>
 					</div>
-				
 				</div>
 				
 				<div id="statistics">
-					<div class="legendItem utilityItem ui-accordion-header ui-helper-reset ui-state-default ui-state-active ui-corner-top">
-
-						<label for="statsCombobox">Statistics Layer:</label>
-						<select id="statsCombobox" ></select>
+					<div id="statState">
+						<h3><a href="#">State</a></h3>
+						<div>State Not Selected Yet.</div>
 					</div>
-					<div class="legendItem utilityItem ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active">
-						<div id="statsDiv"></div>
+					<div id="statCongress">
+						<h3><a href="#">Congressional</a></h3>
+						<div>District Not Selected Yet.</div>
 					</div>
-					
+					<div id="statCounty">
+						<h3><a href="#">County</a></h3>
+						<div>District Not Selected Yet.</div>
+					</div>
+					<div id="statZip">
+						<h3><a href="#">Zip</a></h3>
+						<div>District Not Selected Yet.</div>
+					</div>
 				</div>
 				
 				<div id="officials">
@@ -98,6 +106,14 @@
 						<div>District Not Selected Yet.</div>
 					</div>
 				</div>
+				<!--<div id="billSearch">
+					<div class="legendItem utilityItem ui-accordion-header ui-helper-reset ui-state-default ui-state-active ui-corner-top">
+						<label for="billSearch">Bill Search:</label>
+						<input id="billSearch" type="search" />
+					</div>
+					<div id="billError" class="utilityItem"></div>
+					<hr />
+				</div>-->
 			</div>
 		</div>
 		<!--! end of #container -->
