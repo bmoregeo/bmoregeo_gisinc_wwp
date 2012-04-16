@@ -1,32 +1,61 @@
 var config = {
 	"layers": {
-	"basemap": {"service": "http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer", 
-				"title": "Street Map",
-				"id": "esriStreetMap"},
-		"dynamicLayers": [{
-				"service": "http://wwp.gisinc.com/ArcGIS/rest/services/FRICKE/ApprovedWW/MapServer",
-				"title": "Approved WWP",
-				"id": "AWWP",
-				"visible":true,
-				},{
-				"service": "http://wwp.gisinc.com/ArcGIS/rest/services/FRICKE/PendingWW/MapServer",
-				"title": "Pending WWP",
-				"id": "PWWP",
-				"visible":false,
-				},{
-				"service": "http://wwp.gisinc.com/ArcGIS/rest/services/FRICKE/Volunteers/MapServer",
-				"title": "Volunteers",
-				"id": "VWWP",
-				"visible":false,
-				},{
-				"service": "http://services.arcgisonline.com/ArcGIS/rest/services/Demographics/USA_Population_Density/MapServer",
-				"title": "Population Density",
-				"id": "PopDensity",
-				"visible":false,
-				},
-				
-				]
-	},	
+	"basemap": {"service": "http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer", 
+				"title": "Gray Base Map",
+				"id": "esriGrayMap"
+	},
+	"staticDynamic":[{
+			"service": "http://wwp.gisinc.com/ArcGIS/rest/services/FRICKE/ApprovedWW/MapServer",
+			"title": "Boundary",
+			"id": "BoundaryLayer",
+			"visible":true,
+			"opacity": 0,
+			},
+	],
+	"dynamicLayers": [{
+			"service": "http://wwp.gisinc.com/ArcGIS/rest/services/FRICKE/ApprovedWW/MapServer",
+			"title": "Approved WWP",
+			"id": "AWWP",
+			"visible":true,
+			"opacity": .75,
+			},{
+			"service": "http://wwp.gisinc.com/ArcGIS/rest/services/FRICKE/PendingWW/MapServer",
+			"title": "Pending WWP",
+			"id": "PWWP",
+			"visible":false,
+			"opacity": .75,
+			},{
+			"service": "http://wwp.gisinc.com/ArcGIS/rest/services/FRICKE/Volunteers/MapServer",
+			"title": "WWP Volunteers",
+			"id": "VWWP",
+			"visible":false,
+			"opacity": .75,
+			},{
+			"service": "http://wwp.gisinc.com/ArcGIS/rest/services/FRICKE/Projected_Growth_in_Veterans/MapServer",
+			"title": "Projected Veteran Growth",
+			"id": "VeteranGrowth",
+			"visible":false,
+			"opacity": .75,
+			},{
+			"service": "http://wwp.gisinc.com/ArcGIS/rest/services/FRICKE/Population_Over_18/MapServer",
+			"title": "Population Over 18",
+			"id": "Pop18",
+			"visible":false,
+			"opacity": .75,
+			},{
+			"service": "http://wwp.gisinc.com/ArcGIS/rest/services/FRICKE/Population_Growth/MapServer",
+			"title": "Population Growth",
+			"id": "PopGrowth",
+			"visible":false,
+			"opacity": .75,
+			},{
+			"service": "http://wwp.gisinc.com/ArcGIS/rest/services/FRICKE/Population_Density/MapServer",
+			"title": "Population Density",
+			"id": "PopDensity",
+			"visible":false,
+			"opacity": .75,
+			}	
+	]},	
 	"extent": {"xmin": -135.46, "ymin": 37.73, "xmax": -67.36, "ymax": 37.77, "spatialReference": {"wkid": 4326}},
 	"utilities": {
 		"geocoder": {
@@ -37,12 +66,12 @@ var config = {
 			},
 		},
 		"query":{
-			"url": "http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Demographics/ESRI_Census_USA/MapServer/",
+			"url": "http://wwp.gisinc.com/ArcGIS/rest/services/FRICKE/QUERY/MapServer",
 			"layers":[
-				{"title": "National", "id":5, "fields":[]},
-				{"title": "Congressional", "id":5, "fields":[]},
-				{"title": "State", "id":5, "fields":[]},
-				{"title": "County", "id":2, "fields":[]},
+				{"title": "National", "id":0, "fields":[]},
+				{"title": "Congressional", "id":1, "fields":[]},
+				{"title": "State", "id":2, "fields":[]},
+				{"title": "County", "id":3, "fields":[]},
 
 			]
 		},

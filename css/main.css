@@ -118,6 +118,87 @@ hr{margin:10px 0; color:#fff;}
 		text-align:center;
 	}
 
+
+#credits{
+	position:absolute;
+	bottom:0;
+	left:0;
+	margin: 0 0 15px 15px;
+	z-index:10;
+	width:200px;
+	height:20px;
+	background:#000;
+	color:#fff;
+	padding:5px;
+	border:1px solid #fff;
+	
+			border-radius: 10px; 
+	-moz-border-radius: 10px; 
+	-webkit-border-radius: 10px;
+	
+	background: #7d7e7d; /* Old browsers */
+	background: -moz-linear-gradient(top,  #7d7e7d 0%, #0e0e0e 57%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7d7e7d), color-stop(57%,#0e0e0e)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 57%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 57%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 57%); /* IE10+ */
+	background: linear-gradient(top,  #7d7e7d 0%,#0e0e0e 57%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
+
+}
+	#credits:hover{
+		background:#444444;
+		text-decoration:underline;
+		color:#75ABFF;
+	}
+	#creditTitle{
+		text-align:center;
+		font-weight:bold;
+	}
+	#creditDesc{
+		display:none;
+	}
+#creditDialog{
+	background:#000;
+	padding:10px;
+	border:1px solid #fff;
+	border-radius: 10px; 
+	-moz-border-radius: 10px; 
+	-webkit-border-radius: 10px;
+	
+	background: #7d7e7d; /* Old browsers */
+	background: -moz-linear-gradient(top,  #7d7e7d 0%, #0e0e0e 57%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7d7e7d), color-stop(57%,#0e0e0e)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 57%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 57%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 57%); /* IE10+ */
+	background: linear-gradient(top,  #7d7e7d 0%,#0e0e0e 57%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
+
+	
+}
+#creditDialog .dijitDialogTitleBar{
+	border-bottom:1px solid #75ABFF;
+	margin:1px 0;
+	font-size:20px;
+	font-weight:bold;
+	color:#75ABFF;
+}
+#creditDialog .closeText{
+	float:right;
+	background:#000;
+	padding:1px 5px;
+	border:1px solid #fff;
+	border-radius: 5px; 
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	text-align:center;
+	font-size:12px;
+}
+#creditDialog .dijitDialogPaneContent{
+	padding:2px;
+	margin:3px 0 0 0;
+}
 /* LAYOUT */
 .ui-layout-pane{
 	background:#000;

@@ -18,6 +18,7 @@ function addDynamicLayers() {
 		l = new esri.layers.ArcGISDynamicMapServiceLayer(layer.service, {
 			id : layer.id,
 			visible: layer.visible,
+			opacity: layer.opacity,
 		});
 		$("#legendCombobox").append("<option value=" + layer.id + ">" + layer.title + "</option>");
 		legendLayers.push({title: layer.title, layer: l});
@@ -29,7 +30,6 @@ function addDynamicLayers() {
 }
 
 function setVisibleLayers(value){
-	
    	dojo.forEach(config.layers.dynamicLayers, function(layer){
    		map.getLayer(layer.id).setVisibility((layer.id == value));
    	});

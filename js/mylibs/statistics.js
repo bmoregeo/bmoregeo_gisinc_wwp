@@ -30,7 +30,6 @@ function queryStatistics(point){
 
 
 function statisticsModel(statFeature){
-	console.log(statFeature);
 	var info = [
 		{"data":{
 			"Projected":{

@@ -11,6 +11,7 @@ dojo.require("esri.tasks.query");
 dojo.require("esri.tasks.geometry");
 dojo.require("dijit.form.CheckBox");
 dojo.require("dijit.form.Select");
+dojo.require("dijit.Dialog");
 dojo.require("dojox.charting.widget.Chart2D");
 dojo.require("dojox.charting.themes.Electric");
 
@@ -76,13 +77,32 @@ function makeMap(){
    	/* Setup Query Layers */
    	addQueryLayers();
    	
+   	initIdentStat();
+   	
    	/* Operational Layers */
    	legendLayers = addDynamicLayers();
+   	
+   	/* Static Dynamic Layers */
+   	/*
+   	var staticDynamic = dojo.map(config.layers.staticDynamic, function(layer){
+   		var l = new esri.layers.ArcGISDynamicMapServiceLayer(layer.service, {
+			id : layer.id,
+			visibility: layer.visible,
+		});
+   		map.addLayer(l);
+   		return l;
+   	});*/
    	
    	/* Geocode Graphics */
 	geocodeLayer = new esri.layers.GraphicsLayer({id:"lyrGeocode"});
 	map.addLayer(geocodeLayer);
 	map.reorderLayer(geocodeLayer,1);
+   	
+   	var myDialog = new dijit.Dialog({
+            title: "Acknowledgements",
+            style: "width: 300px",
+            id: "creditDialog",
+        });
    	
    	
    	// on click, update stats  
@@ -92,7 +112,12 @@ function makeMap(){
 	
 	dojo.connect(map, "onClick", function(evt) {
 		queryOfficial(evt.mapPoint);
-		queryStatistics(evt.mapPoint);
+		identStat(evt.mapPoint);
+	});
+	
+	dojo.connect(dojo.byId('credits'), "onclick", function(evt){
+		 myDialog.set("content", "Congressional Tracker for the Wounded Warrior Project.  Using data provided by the wounded warrior project and API access to sunlight labs.");
+		 myDialog.show();
 	});
 	
    	/* Add Legend */
