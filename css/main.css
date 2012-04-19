@@ -27,7 +27,7 @@ header{
 	}
 /* */
 header{
-	height:10%;
+	height:100px;
 	width:100%;
 }
 header#mainheader{
@@ -35,26 +35,26 @@ header#mainheader{
 }
 	header#mainHeader #logo{
 		float:left;
-		margin-right:50px;
+		width:100px;
+		margin-right:25px;
 	}
 	header#mainheader .headerTextWrap{
 		float:left;
 		width:50%;
-		height:100%;
 	}
 	header#mainHeader h1{
 		line-height:1;
-		padding:0;
-		height:65%;
+		padding:1% 0 0 0;
 		margin:0;
+		font-size:200%;
 	}
 	
 	header#mainHeader h2{
 		line-height:1;
 		padding:0;
-		height:30%;
 		font-style:italic;
 		margin:0;
+		font-size:150%;
 	}
 #addressBar{
 	position:absolute;

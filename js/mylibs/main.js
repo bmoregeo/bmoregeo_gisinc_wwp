@@ -31,6 +31,7 @@ $(document).ready(function() {
    			resizable:false,
    			slidable:false,
    			closable:false,
+   			size:100,
    		},
    		center:{
    			onresize_end: function(){
