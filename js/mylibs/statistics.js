@@ -47,7 +47,7 @@ function statisticsModel(statFeature){
 			"Population Age Breakdown":{
 				"5 - 17": getValue(statFeature, "AGE_5_17", ""),
 				"18 - 21": getValue(statFeature, "AGE_18_21", ""),
-				"22 - 29": getValue(statFeature, "AGE_22_29", ""),
+				"22 - 29": getValsue(statFeature, "AGE_22_29", ""),
 				"30 - 39": getValue(statFeature, "AGE_30_39", ""),
 				"40 - 49": getValue(statFeature, "AGE_40_49", ""),
 				"50 - 64": getValue(statFeature, "AGE_50_64", ""),

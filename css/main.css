@@ -100,7 +100,7 @@ hr{margin:10px 0; color:#fff;}
 	font-size:125%;
 }
 .officialTable .key{
-	width:35%;
+	width:50%;
 	padding:0 2.5%;
 	text-align:right;
 }
@@ -115,8 +115,11 @@ hr{margin:10px 0; color:#fff;}
 		border-bottom:.5px solid #999;
 		padding:2px 0;
 		font-size:125%;
-		text-align:center;
+		text-align:left;
 	}
+div.statTitle.ui-state-active:hover{
+	background:#75ABFF;
+}
 
 
 #credits{
@@ -251,4 +254,29 @@ hr{margin:10px 0; color:#fff;}
 .ui-accordion-header{
   text-align: left;
 }
-
+#statistics{
+	height:100%;
+}
+#statistics div.wrap{
+	height:80%;
+}
+#statistics div.statItem{
+	width: 90%;
+	margin:0;
+	padding:0 5%;
+	height:80%;
+}
+#statistics div.statChart{
+	margin:0;
+	padding:0;
+	width:90%;
+	
+}
+#statistics .hide{
+	position:absolute;
+	left:-10000px;
+}
+#statistics .show{
+	position:relative;
+	left:0;
+}

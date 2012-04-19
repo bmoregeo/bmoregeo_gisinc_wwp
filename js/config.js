@@ -5,7 +5,7 @@ var config = {
 				"id": "esriGrayMap"
 	},
 	"staticDynamic":[{
-			"service": "http://wwp.gisinc.com/ArcGIS/rest/services/FRICKE/ApprovedWW/MapServer",
+			"service": "http://wwp.gisinc.com/ArcGIS/rest/services/FRICKE/Boundary/MapServer",
 			"title": "Boundary",
 			"id": "BoundaryLayer",
 			"visible":true,
@@ -31,21 +31,9 @@ var config = {
 			"visible":false,
 			"opacity": .75,
 			},{
-			"service": "http://wwp.gisinc.com/ArcGIS/rest/services/FRICKE/Projected_Growth_in_Veterans/MapServer",
-			"title": "Projected Veteran Growth",
-			"id": "VeteranGrowth",
-			"visible":false,
-			"opacity": .75,
-			},{
 			"service": "http://wwp.gisinc.com/ArcGIS/rest/services/FRICKE/Population_Over_18/MapServer",
 			"title": "Population Over 18",
 			"id": "Pop18",
-			"visible":false,
-			"opacity": .75,
-			},{
-			"service": "http://wwp.gisinc.com/ArcGIS/rest/services/FRICKE/Population_Growth/MapServer",
-			"title": "Population Growth",
-			"id": "PopGrowth",
 			"visible":false,
 			"opacity": .75,
 			},{
@@ -54,7 +42,7 @@ var config = {
 			"id": "PopDensity",
 			"visible":false,
 			"opacity": .75,
-			}	
+			}
 	]},	
 	"extent": {"xmin": -135.46, "ymin": 37.73, "xmax": -67.36, "ymax": 37.77, "spatialReference": {"wkid": 4326}},
 	"utilities": {
@@ -68,10 +56,10 @@ var config = {
 		"query":{
 			"url": "http://wwp.gisinc.com/ArcGIS/rest/services/FRICKE/QUERY/MapServer",
 			"layers":[
-				{"title": "National", "id":0, "fields":[]},
-				{"title": "Congressional", "id":1, "fields":[]},
+				{"title": "Zip", "id":0, "fields":[]},
+				{"title": "County", "id":1, "fields":[]},
 				{"title": "State", "id":2, "fields":[]},
-				{"title": "County", "id":3, "fields":[]},
+				{"title": "Congressional", "id":3, "fields":[]},
 
 			]
 		},
@@ -123,4 +111,5 @@ function chart(id, title, infoData, type){
 	chart.addAxis("x", {labels:labels, majorLabels:true, stroke:'white', fontColor:'white'});
 	chart.addAxis("y", {vertical: true, min:0, fontColor:'white', stroke:'white'});
 	chart.render();
+	/*chart.resize(300,300);*/
 }

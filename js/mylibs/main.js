@@ -51,10 +51,28 @@ $(document).ready(function() {
 		autoHeight: false,
  	});
  	
- 	$("#statistics").accordion({ 
-		header: "h3",
-		autoHeight: false,
- 	});
+ 	$('#statistics h3').click(function() {
+		$(this).next().toggleClass("show");
+		
+		selID = $(this).parent().attr('id');
+		$('#statistics div.wrap').each(function(i){
+			if (!($(this).attr("id") === selID)){
+				$(this).children(".statItem").addClass("hide").removeClass("show");
+				$(this).children(".statTitle").removeClass("ui-state-active");
+
+			}
+			else{
+				$(this).children(".statTitle").addClass("ui-state-active");
+
+			}
+			
+		});
+		
+		
+		//alert($(this).parent().attr('id'));
+		return false;
+	}).next();
+ 	
 	
 	/* Create tabed sidebar */
 	$('#sidebarTabs').tabs({header:"h2"});
@@ -81,9 +99,8 @@ function makeMap(){
    	
    	/* Operational Layers */
    	legendLayers = addDynamicLayers();
-   	
    	/* Static Dynamic Layers */
-   	/*
+   	
    	var staticDynamic = dojo.map(config.layers.staticDynamic, function(layer){
    		var l = new esri.layers.ArcGISDynamicMapServiceLayer(layer.service, {
 			id : layer.id,
@@ -91,7 +108,7 @@ function makeMap(){
 		});
    		map.addLayer(l);
    		return l;
-   	});*/
+   	});
    	
    	/* Geocode Graphics */
 	geocodeLayer = new esri.layers.GraphicsLayer({id:"lyrGeocode"});

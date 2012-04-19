@@ -20,73 +20,69 @@ function identStat(point){
 	identifyParams.mapExtent = map.extent;
 	identifyTask.execute(identifyParams, function(idResults) { identResultCallback(idResults); });
 }
-/*
+
 function statisticsModel(statFeature){
-	var info = [
-		{"data":{
-			"Projected":{
-				"5 - 17": getValue(statFeature, "AGE_5_17", ""),
-				"18 - 21": getValue(statFeature, "AGE_18_21", ""),
-				"22 - 29": getValue(statFeature, "AGE_22_29", ""),
-				"30 - 39": getValue(statFeature, "AGE_30_39", ""),
-				"40 - 49": getValue(statFeature, "AGE_40_49", ""),
-				"50 - 64": getValue(statFeature, "AGE_50_64", ""),
-				"65+": getValue(statFeature, "AGE_65_UP", "")
+	console.log(statFeature);
+	return [{
+			"data":{
+				"Census Demographics":{
+					"Population Density": getFloat(statFeature, "TOTPOP_CY", "comma"),
+					"Percent Growth": getFloat(statFeature, "POPGRW00_CY ", "comma"),
+					"Population Over 18": getFloat(statFeature, "POP18UP_CY", "comma"),
+				}
+			},
+			"type":"table",
+		},{
+			"data":{
+				"WWP Demographics":{
+					"WWP Volunteers": getFloat(statFeature, "WWP_VOLUNTEER", "comma"),
+					"Approved Members": getFloat(statFeature, "WWP_APPROVED", "comma"),
+					"Pending Members": getFloat(statFeature, "WWP_PENDING", "comma"),
 			}
 		},
-		"type": "table"
-	},{"data":{
-			"Population Age Breakdown":{
-				"5 - 17": getValue(statFeature, "AGE_5_17", ""),
-				"18 - 21": getValue(statFeature, "AGE_18_21", ""),
-				"22 - 29": getValue(statFeature, "AGE_22_29", ""),
-				"30 - 39": getValue(statFeature, "AGE_30_39", ""),
-				"40 - 49": getValue(statFeature, "AGE_40_49", ""),
-				"50 - 64": getValue(statFeature, "AGE_50_64", ""),
-				"65+": getValue(statFeature, "AGE_65_UP", "")
-			}
+			"type":"table",
+		},{
+			"data":{
+				"Veteran Population":{
+					"2000": getFloat(statFeature, "P9_30_2000"),
+					"2005": getFloat(statFeature, "P9_30_2005"),
+					"2010": getFloat(statFeature, "P9_30_2010"),
+					"2015": getFloat(statFeature, "P9_30_2015"),
+					"2020": getFloat(statFeature, "P9_30_2020"),
+					"2025": getFloat(statFeature, "P9_30_2025"),
+					"2030": getFloat(statFeature, "P9_30_2030")
+				}
+			},
+			"type": "Columns"
 		},
-		"type": "Columns"
-	},
-	]
-	return info;
-}*/
-function statisticsModel(statFeature){
-	return [
-		{"data":{
-			"Example":{
-				"Shape_Length": getValue(statFeature, "Shape_Length", ""),
-				"Shape_Area": getValue(statFeature, "Shape_Area", ""),
-				"ObjectID": getValue(statFeature, "OBJECTID", ""),
-			}
-		},
-		"type":"table",
-		}
+		
+	
 	]
 }
 
-function statisticsView(div, info){
-	info = info[0];
-	console.log(info[0]);
-	var text = "";
-	if (info.type === "table"){
-		var x = 0;
-		for (var key in info.data){
-			x = x + 1;
-			$(div).append(table('stat_' + x, key, info.data[key]));
+function statisticsView(div, infos){
+	dojo.forEach(infos, function(info){
+		console.log(info);
+		var text = "";
+		if (info.type === "table"){
+			var x = 0;
+			for (var key in info.data){
+				x = x + 1;
+				$(div).append(table('stat_' + x, key, info.data[key]));
+			}
 		}
-	}
-	else if(info.type === 'Columns'){
-		var c = 0;
-		for (var key in info.data){
-			c = c + 1;
-			id = 'statchart_'+ key.replace(/\s/g,"_") + '_' + c
-			$(div).append('<div id="' + id + '" class="statChart"><h3>'+ key +'</h3></div>');
-			chart(id, key, info.data[key], info.type);
+		else if(info.type === 'Columns'){
+			var c = 0;
+			for (var key in info.data){
+				c = c + 1;
+				id = div.replace(/\s/g,"_") + 'statchart_'+ key.replace(/\s/g,"_") + '_' + c
+				$(div).append('<div id="' + id + '" class="statChart"><h3>'+ key +'</h3></div>');
+				chart(id, key, info.data[key], info.type);
+			}
 		}
-	}
-	else{alert('nope');}
-	return text;
+		else{alert('nope');}
+		return text;
+	});
 }
 
 function identResultCallback(results){
@@ -94,19 +90,18 @@ function identResultCallback(results){
 	if(results){
 		dojo.forEach(results, function(result){
 			if (!(result.layerId in ids)){
-				//console.log(result);
 				ids.push(result.layerName);
-				var iData = statisticsModel(result.feature.attributes);
+				var iData = statisticsModel(result.feature.attributes);				
 				if (result.layerName === 'STATE'){
 					$('#statState div').html("");
 					statisticsView('#statState div', iData);
-				} else if(result.layerName === 'CONGRESSIONALDISTRICT'){
+				} else if(result.layerName === 'CONGRESSIONAL'){
 					$('#statCongress div').html("");
 					statisticsView('#statCongress div', iData);
 				} else if(result.layerName === 'COUNTY'){
 					$('#statCounty div').html("");
 					statisticsView('#statCounty div', iData);
-				} else if(result.layerName === 'ZIP'){
+				} else if(result.layerName === 'ZIP5'){
 					$('#statZip div').html("");
 					statisticsView('#statZip div', iData);
 				} else {console.log("does not work");}
