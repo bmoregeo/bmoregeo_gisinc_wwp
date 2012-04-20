@@ -61,7 +61,7 @@ function showAddress(candidates){
 	    	//add a graphic to the map at the geocoded location
 	    	map.graphics.add(graphic);
 	    	queryOfficial(candidate.location);
-	    	queryStatistics(candidate.location);
+	    	identStat(candidate.location);
 	    	setTimeout(clearGeocode, 5000)
 	    	return false; //break out of loop after one candidate with score greater  than 80 is found.
 	  	}
@@ -77,14 +77,18 @@ function showAddress(candidates){
 
 function getValue(object, value, template){
 	try{
-		if(template.length && object[value].length){
-			return template.replace('{' + value + '}', object[value]);
-		}
+		if template{
+			if(template.length && object[value].length){
+				return template.replace('{' + value + '}', object[value]);
+			}
+			else{
+				return " "
+			}
 		else if(object[value]){
 			return object[value];
 		}
 		else{
-		return ""
+		return " "
 		}
 	}
 	catch(err){
