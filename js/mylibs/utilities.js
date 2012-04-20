@@ -77,13 +77,14 @@ function showAddress(candidates){
 
 function getValue(object, value, template){
 	try{
-		if template{
+		if (template){
 			if(template.length && object[value].length){
 				return template.replace('{' + value + '}', object[value]);
 			}
 			else{
 				return " "
 			}
+        }
 		else if(object[value]){
 			return object[value];
 		}
